@@ -82,6 +82,7 @@ class LoginPageTestSuits(unittest.TestCase):
         self.assertEqual([['Oksana', 'Yakymets', '79000', '1016', 'Delete']], self.login_page.search_results_page())
         self.login_page.delete_created_customer()
         self.assertEqual([], self.login_page.search_results_page_after_deleted_account())
+        TEST
 
 
 
