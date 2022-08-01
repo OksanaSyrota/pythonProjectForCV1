@@ -23,7 +23,8 @@ class LoginPageTestSuits(unittest.TestCase):
         self.login_page.click_customer_login_button()
         # Select Name Page
         self.assertEqual("Your Name :", self.login_page.get_your_name_text())
-        self.assertEqual(['---Your Name---', 'Hermoine Granger', 'Harry Potter', 'Ron Weasly', 'Albus Dumbledore', 'Neville Longbottom'],
+        self.assertEqual(['---Your Name---', 'Hermoine Granger', 'Harry Potter', 'Ron Weasly', 'Albus Dumbledore',
+                          'Neville Longbottom'],
                          [item.text for item in Select(self.login_page.check_customer_name_list()).options])
         self.login_page.select_name_from_list()
         self.login_page.click_login_button()
@@ -42,10 +43,10 @@ class LoginPageTestSuits(unittest.TestCase):
         self.login_page.click_deposit_submit_button()
         self.assertEqual('Deposit Successful', self.login_page.get_successful_text())
         # WithDrawl Form
-        #self.login_page.click_withdrawl_button()
-        #self.login_page.enter_amount_for_withdrawl()
-        #self.login_page.click_withdrawl_submit_button()
-        #self.assertEqual('Transaction successful', self.login_page.get_successful_text_for_withdrawl())
+        self.login_page.click_withdrawl_button()
+        self.login_page.enter_amount_for_withdrawl()
+        self.login_page.click_withdrawl_submit_button()
+        self.assertEqual('Transaction successful', self.login_page.get_successful_text_for_withdrawl())
         # Transaction Form
         self.login_page.click_transaction_button()
         #self.assertEqual([['test', '100', 'credit']], self.login_page.transactions_table()) DATA!!!!!
@@ -82,9 +83,6 @@ class LoginPageTestSuits(unittest.TestCase):
         self.assertEqual([['Oksana', 'Yakymets', '79000', '1016', 'Delete']], self.login_page.search_results_page())
         self.login_page.delete_created_customer()
         self.assertEqual([], self.login_page.search_results_page_after_deleted_account())
-        TEST
-
-
 
 
     @classmethod

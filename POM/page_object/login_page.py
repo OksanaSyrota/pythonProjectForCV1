@@ -1,5 +1,8 @@
+import time
+
 from POM.page_object.base_object import BaseObject
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.action_chains import ActionChains
@@ -113,11 +116,11 @@ class LoginPage(BaseObject):
     ###
     def click_withdrawl_button(self):
         self.driver.find_element(*locators["withdrawlButton"]).click()
+        time.sleep(3)
         self.wait.until(EC.element_to_be_clickable(locators["amountFieldWithdrawl"]))
 
     def enter_amount_for_withdrawl(self):
         self.driver.find_element(*locators["amountFieldWithdrawl"]).send_keys('50')
-        self.wait.until(EC.visibility_of_element_located(locators["SubmitButtonWithdrawl"]))
 
     def click_withdrawl_submit_button(self):
         self.driver.find_element(*locators["SubmitButtonWithdrawl"]).click()
